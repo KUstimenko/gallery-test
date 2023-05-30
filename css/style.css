@@ -1,0 +1,127 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img {
+  vertical-align: top;
+}
+
+html, body {
+  height: 100%;
+  line-height: 1;
+}
+
+.header {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__cartLink .header__cartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  width: 4.5rem;
+  height: 4.5rem;
+  font-size: 1.7rem;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+}
+.header__cartLink .header__cartIcon:hover {
+  color: #fff;
+  background: #27ae60;
+  transform: rotate(360deg);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 950px;
+  gap: 16px;
+  padding: 16px 5px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.front,
+.back {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  transform: rotateY(-180deg);
+}
+
+.item figure {
+  position: relative;
+}
+.item a:hover .front,
+.item a:focus .front {
+  transform: rotateY(180deg);
+}
+.item a:hover .back,
+.item a:focus .back {
+  transform: rotateY(0deg);
+}
+
+@supports (aspect-ratio: 1/1) {
+  .item img {
+    height: revert;
+    aspect-ratio: 1/1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item a:hover .front,
+  .item a:hover .back,
+  .item a:focus .front,
+  .item a:focus .back {
+    transition: transform 400ms;
+  }
+  .front,
+  .back {
+    transition: transform 800ms 150ms;
+  }
+  .back {
+    background-color: black;
+    color: white;
+  }
+}/*# sourceMappingURL=style.css.map */
